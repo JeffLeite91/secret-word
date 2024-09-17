@@ -33,9 +33,9 @@ function App() {
     return{words,category}
 
   }
-  //Function to start the game:
+  //Start the secret word game:
 
-  const startGame = ({ startGame }) => {
+  const startGame = () => {
 
     //pick word and pick category
     const {words, category} = pickWordAndCategory();
@@ -43,8 +43,8 @@ function App() {
     //Create an array of letters
     let wordLetters = word.split("");
     wordLetters = wordLetters.map((l) => l.toLowerCase()); 
+    
     console.log(wordLetters);
-
     console.log(words, category);
 
     setGameStage(stages[1].name);
