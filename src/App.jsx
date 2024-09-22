@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
 import "./App.css";
 import { StartScreen } from "./Components/StartScreen";
-import { wordsList } from "./data/word";
+import { wordsList } from "./data/words";
 import { Game } from "./Components/Game";
 import { GameOver } from "./Components/GameOver";
 
@@ -15,9 +15,9 @@ function App() {
   const [gameStage, setGameStage] = useState(stages[0].name);
   const [word] = useState(wordsList);
 
-  const [pickedWord, SetPickedWord] = useState("");
-  const [pickedCategory, SetPickedCategory] = useState("");
-  const [letters, SetLetters] = useState("");
+  const [pickedWord, setPickedWord] = useState("");
+  const [pickedCategory, setPickedCategory] = useState("");
+  const [letters, setLetters] = useState("");
 
   const pickWordAndCategory = () => {
     //Pick a random category
@@ -41,11 +41,17 @@ function App() {
     const {words, category} = pickWordAndCategory();
 
     //Create an array of letters
-    let wordLetters = word.split("");
+    let wordLetters = words.split("");
     wordLetters = wordLetters.map((l) => l.toLowerCase()); 
     
-    console.log(wordLetters);
     console.log(words, category);
+    console.log(wordLetters);
+
+    //Fill states
+    setPickedWord(word);
+    setPickedCategory(category);
+    setLetters(letters);
+
 
     setGameStage(stages[1].name);
   };
